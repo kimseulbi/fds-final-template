@@ -38,6 +38,8 @@ class ProductDetailView extends Component {
   handlsOptionChange(e) {
     this.setState({
       selectedOptionId: parseInt(e.target.value),
+      // 제어되는 컴퍼넌트에 강력함 ?
+      quantity: 1,
     });
   }
   handleQuantiyChange(e) {
@@ -58,20 +60,31 @@ class ProductDetailView extends Component {
     // 첫페이지에서는 undfind
     const selectedOption = options.find(o => o.id === selectedOptionId);
     const totalPrice = selectedOption && selectedOption.price * quantity;
+    console.log('제품: ', selectedOption);
+    // 옵션에 disabled selected를 사용 했지만 react는 select보다는 defaultValue  나  value를 사용하는것이 좋다.
+    // vaule prop에 사용 하면 안된다.제어되는 컴포넌트에 null을 넘기면 안됩니다.
     return (
       <div>
         <select
           value={selectedOptionId}
           onChange={e => this.handlsOptionChange(e)}
+          required
         >
+          <option disabled value="">
+            옵션을 선택하세요
+          </option>
           {options.map(o => (
-            <option value={o.id}>{o.title}</option>
+            <option key={o.id} value={o.id}>
+              {o.title}
+            </option>
           ))}
         </select>
         <input
           type="number"
           value={quantity}
           onChange={e => this.handleQuantiyChange(e)}
+          min="1"
+          max="10"
         />
         <div>가격: {totalPrice}</div>
         <div>{id}</div>
