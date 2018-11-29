@@ -16,6 +16,9 @@ class ProductDetailView extends Component {
       //   price: 30000,
       // },
     ],
+    // 장바구니 항목 추가 시 호출되는 함수
+    // 옵션 id와 수량을 인수로 넘겨야 함
+    onCreateCartItem: () => {},
   };
   // 이페이지에서만 사용하는 상태라면 view에 두어도 된다.
   // UI 상태를 변경은 view에 두어도 된다.
