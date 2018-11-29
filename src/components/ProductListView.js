@@ -13,14 +13,14 @@ class ProductListView extends Component {
     ],
   };
   render() {
-      const {products} = this.props;
+    const { products } = this.props;
     return (
       <div>
         {products.map(p => (
           <div key={p.id}>
             <div>{p.id}</div>
             <div>{p.title}</div>
-            <img src={p.imgURL} alt={p.title}/>
+            <img src={p.imgURL} alt={p.title} />
           </div>
         ))}
       </div>
