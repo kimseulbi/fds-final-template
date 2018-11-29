@@ -16,11 +16,23 @@ export default class ProductDetail extends Component {
       description: '',
       mainImgUrl: '',
       detailImgUrls: [],
+      options: [
+        // {
+        //   id: 1,
+        //   productId: 1,
+        //   title: 'Medium',
+        //   price: 30000,
+        // },
+      ],
     };
   }
   async componentDidMount() {
-      const { productId } = this.props;
-      const { data: product } = await api.get('/products/' + productId);
+    const { productId } = this.props;
+    const { data: product } = await api.get('/products/' + productId, {
+      params: {
+        _embed: 'options',
+      },
+    });
     this.setState({
       ...product,
       loading: false,
@@ -29,7 +41,7 @@ export default class ProductDetail extends Component {
   render() {
     const product = {
       id: 1,
-      title: '자켓', 
+      title: '자켓',
       description: '따듯해요',
       mainImgUrl: '',
       detailImgUrls: [''],
