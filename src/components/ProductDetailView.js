@@ -87,6 +87,24 @@ class ProductDetailView extends Component {
           max="10"
         />
         <div>가격: {totalPrice}</div>
+        <button
+          onClick={() => {
+            const { selectedOption, quantity } = this.state;
+            if (selectedOption === '') {
+              alert('옵션을 선택하세요.');
+            } else if (quantity < 1) {
+              alert('1 이상의 수량을 입력하세요.');
+            } else {
+              this.props.onCreateCartItem(selectedOptionId, quantity);
+            }
+            this.props.onCreateCartItem(
+              this.state.selectedOptionId,
+              this.state.quantity
+            );
+          }}
+        >
+          장바구니에 담기
+        </button>
         <div>{id}</div>
         <div>{title}</div>
         <div>{description}</div>
