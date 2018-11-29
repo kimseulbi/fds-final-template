@@ -5,7 +5,7 @@ import { withUser } from '../contexts/UserContext';
 class LoginForm extends Component {
   render() {
     const { login } = this.props;
-    return <LoginFormView onLogi={login} />;
+    return <LoginFormView onLogin={login} />;
   }
 }
 
