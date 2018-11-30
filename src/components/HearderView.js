@@ -5,18 +5,8 @@ import { Link, Redirect } from 'react-router-dom';
 // 부작용을 이르키는 컴포넌트이다.
 // 사용자가 무언가를 하지않아도 화면을 전환을 해야될떄 사용
 export default class HearderView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      logoutSuccess: false,
-    };
-  }
   render() {
-    const { username, logout } = this.props;
-    const { logoutSuccess } = this.state;
-    if (logoutSuccess) {
-      return <Redirect to="/" />;
-    }
+    const { username, logout, history } = this.props;
     // 화면이 제대로 안나가는 경우가 싶습니다.
     // headerview가 제대로 변경이 안됩니다. 메인페이지에서 메인페이지로 이동하라고 해서 상태가 변경 되지 않았기 떼문에
     // key 값으로 해결 가능
@@ -29,9 +19,7 @@ export default class HearderView extends Component {
             <button
               onClick={() => {
                 logout();
-                this.setState({
-                  logoutSuccess: true,
-                });
+                history.push('/');
               }}
             >
               로그아웃
