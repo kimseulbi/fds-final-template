@@ -3,7 +3,7 @@ import ProductDetailView from '../components/ProductDetailView';
 import api from '../api';
 
 export default class ProductDetail extends Component {
-  static defaultPros = {
+  static defaultProps = {
     // 표시해주어야 하는 상품의 id
     productId: null,
   };
@@ -26,7 +26,6 @@ export default class ProductDetail extends Component {
       ],
       // 장바구니 항목 추가 시 호출되는 함수
       // 옵션 id의 수량을 인수로 넘겨야함.
-      onCreateCartItem: () => {},
     };
   }
   async componentDidMount() {

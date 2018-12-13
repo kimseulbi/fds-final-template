@@ -100,10 +100,6 @@ class ProductDetailView extends Component {
             } else {
               this.props.onCreateCartItem(selectedOptionId, quantity);
             }
-            this.props.onCreateCartItem(
-              this.state.selectedOptionId,
-              this.state.quantity
-            );
           }}
         >
           장바구니에 담기
